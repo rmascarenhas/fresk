@@ -2,13 +2,24 @@
 <html>
 <head>
   <title>Fresk</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
+  <%= stylesheet_link_tag    'application', media: 'all' %>
+  <%= stylesheet_link_tag 'http://fonts.googleapis.com/css?family=The+Girl+Next+Door' %>
+  <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
 </head>
+
 <body>
 
-<%= yield %>
+  <%# header %>
+  <div class="container">
+    <header>
+      <h1>fresk</h1>
+      <p class="headline"><i>ToDo lists made social.<i></p>
+    </header>
+
+    <%= yield %>
+
+  </div>
 
 </body>
 </html>
