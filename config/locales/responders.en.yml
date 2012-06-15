@@ -1,0 +1,12 @@
+en:
+  flash:
+    actions:
+      create:
+        notice_html: '<div class="row"><div class="alert alert-success">%{resource_name} was successfully created.</div></div>'
+        alert_html: '<div class="row"><div class="alert alert-info">%{resource_name} could not be created.</div></div>'
+      update:
+        notice_html: '<div class="row"><div class="alert alert-success">%{resource_name} was successfully updated.</div></div>'
+        alert_html: '<div class="row"><div class="alert alert-info">%{resource_name} could not be updated.</div></div>'
+      destroy:
+        notice_html: '<div class="row"><div class="alert alert-success">%{resource_name} was successfully destroyed.</div></div>'
+        alert_html: '<div class="row"><div class="alert alert-info">%{resource_name} could not be destroyed.</div></div>'
