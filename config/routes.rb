@@ -1,6 +1,8 @@
 Fresk::Application.routes.draw do
   resources :task_lists
 
+  get 'not_found', to: 'home#not_found'
+
   root to: 'home#index'
 
   # Sample resource route with options:

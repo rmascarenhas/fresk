@@ -14,8 +14,14 @@
   <div class="container">
     <header>
       <h1>fresk</h1>
-      <p class="headline"><i>ToDo lists made social.<i></p>
+      <p class="headline">
+        <i>ToDo lists made social.</i>
+      </p>
     </header>
+
+    <% [:notice, :alert].each do |message| %>
+      <%= flash[message] %>
+    <% end %>
 
     <%= yield %>
 
