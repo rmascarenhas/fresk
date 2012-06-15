@@ -1,4 +1,9 @@
-<h3><%= task_list.name %></h3>
-<%= task_list_icon(task_list) %>
-
-<hr />
+<div class="row well">
+  <div class="span2">
+    <b><%= link_to task_list.name, task_list_path(task_list) %></b>
+  </div>
+  <div class="span1">
+    <%= task_list_icon(task_list) %>
+  </div>
+  (21 tasks)
+</div>

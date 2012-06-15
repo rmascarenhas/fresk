@@ -11,6 +11,7 @@
  *= require_self
  *= require_tree .
  *= require boostrap.min.css
+ *= require font-awesome.css
  */
 
 body {

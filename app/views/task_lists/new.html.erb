@@ -1,0 +1,16 @@
+<%= simple_form_for @task_list, html: { class: 'form-horizontal' } do |f| %>
+  <fieldset>
+    <legend>New Task List</legend>
+
+    <%= f.input :name, wrapper: :prepend, label: false do %>
+      <%= content_tag :span, 'Give it a name', class: 'add-on' %>
+      <%= f.input_field :name, placeholder: 'Must be unique!' %>
+    <% end %>
+
+    <%= f.input :public, label: 'Public?' %>
+
+    <div class="form-actions">
+      <%= f.button :submit, class: 'btn-primary', value: 'Create' %>
+    </div>
+  </fieldset>
+<% end %>

@@ -19,9 +19,7 @@ describe TaskList do
     end
 
     it 'should be private if it is not public' do
-      list = TaskList.new
-      list.public = false
-      list.should be_private
+      list = TaskList.new(public: false).should be_private
     end
   end
 end

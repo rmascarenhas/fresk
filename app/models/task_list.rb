@@ -1,5 +1,8 @@
 class TaskList < ActiveRecord::Base
-  attr_accessible :name
+  # We can allow the `public' attribute to be mass-assigned since
+  # task list creation is protected by an authentication filter.
+  #
+  attr_accessible :name, :public
 
   validates :name,
             presence: true
