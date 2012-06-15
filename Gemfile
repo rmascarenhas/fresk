@@ -20,7 +20,7 @@ end
 
 gem 'jquery-rails'
 
-group :test do
+group :test, :development do
   gem 'rspec-rails', '~> 2.0'
   gem 'capybara', '~> 1.0'
 end
