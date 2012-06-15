@@ -1,0 +1,21 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: fresk_dev
+  pool: 5
+  username: fresk
+
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: fresk_test
+  pool: 5
+  username: fresk
+
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: fresk_production
+  pool: 5
+  username: fresk
+  password:
