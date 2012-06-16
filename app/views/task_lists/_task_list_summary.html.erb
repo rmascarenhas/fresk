@@ -5,5 +5,5 @@
   <div class="span1">
     <%= task_list_icon(task_list) %>
   </div>
-  (21 tasks)
+  (<%= pluralize(task_list.tasks.size, 'task') %>)
 </div>

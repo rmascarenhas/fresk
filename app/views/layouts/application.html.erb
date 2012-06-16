@@ -13,9 +13,22 @@
   <%# header %>
   <div class="container">
     <header>
-      <h1>fresk</h1>
-      <p class="headline"><i>ToDo lists made social.<i></p>
+      <div class="row">
+        <div class="span2">
+          <h1>fresk</h1>
+        </div>
+        <div class="span2">
+          <%= image_tag('logo.png') %>
+        </div>
+      </div>
+      <p class="headline">
+        <i>ToDo lists made social.</i>
+      </p>
     </header>
+
+    <% [:notice, :alert].each do |message| %>
+      <%= flash[message] %>
+    <% end %>
 
     <%= yield %>
 

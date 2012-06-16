@@ -1,0 +1,23 @@
+<fieldset>
+  <legend><%= legend %></legend>
+
+  <%= builder.input :name, wrapper: :prepend, label: false do %>
+    <%= content_tag :span, 'Give it a name', class: 'add-on' %>
+    <%= builder.input_field :name, placeholder: 'Must be unique!' %>
+  <% end %>
+
+  <%= builder.input :public, label: 'Public?' %>
+
+  <h2>Tasks</h2>
+
+  <%= builder.simple_fields_for :tasks do |tasks_form| %>
+    <%= render 'tasks/task_fields', builder: tasks_form %>
+  <% end %>
+
+  <br /><br />
+  <%= link_to_add_fields 'New task', form_builder: builder, association: :tasks %>
+
+  <div class="form-actions">
+    <%= builder.button :submit, class: 'btn-primary' %>
+  </div>
+</fieldset>

@@ -1,3 +1,3 @@
 <%= simple_form_for @task_list, html: { class: 'form-horizontal' } do |f| %>
-  <%= render 'task_list_fields', builder: f, legend: 'New task list' %>
+  <%= render 'task_list_fields', builder: f, legend: %Q(Edit "#{@task_list.name}") %>
 <% end %>

@@ -1,0 +1,16 @@
+<fieldset>
+  <%= builder.input :description, wrapper: :prepend, label: false do %>
+    <%= content_tag :span, 'What do you have to do?', class: 'add-on' %>
+    <%= builder.input_field :description, placeholder: 'Task description' %>
+  <% end %>
+
+  <%= builder.input :deadline %>
+
+  <%# Hidden field whose value is changed in JavaScript if the user clicks the
+    "Remove Task" link. Adapted from Railscasts #196 %>
+  <%= builder.input :_destroy, as: :hidden %>
+  <%= link_to 'Remove Task', '#', class: 'remove_fields' %>
+
+  <br /><hr />
+</fieldset>
+
