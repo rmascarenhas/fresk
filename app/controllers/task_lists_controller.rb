@@ -1,4 +1,5 @@
 class TaskListsController < ApplicationController
+  before_filter :get_task_list, only: [:edit, :show, :update, :destroy]
 
   def index
     @task_lists = TaskList.all
@@ -9,11 +10,11 @@ class TaskListsController < ApplicationController
   end
 
   def edit
-    @task_list = TaskList.find(params[:id])
+    @task_list = get_task_list
   end
 
   def show
-    @task_list = TaskList.find(params[:id])
+    @task_list = get_task_list
   end
 
   def create
@@ -24,10 +25,23 @@ class TaskListsController < ApplicationController
   end
 
   def update
-    @task_list = TaskList.find(params[:id])
+    @task_list = get_task_list
     @task_list.update_attributes(params[:task_list])
 
     respond_with(@task_list)
+  end
+
+  def destroy
+    @task_list = get_task_list
+    @task_list.destroy
+
+    respond_with(@task_list)
+  end
+
+  private
+
+  def get_task_list
+    TaskList.find(params[:id])
   end
 
 end

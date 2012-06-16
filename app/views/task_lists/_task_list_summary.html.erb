@@ -2,8 +2,16 @@
   <div class="span2">
     <b><%= link_to task_list.name, task_list_path(task_list) %></b>
   </div>
+
   <div class="span1">
     <%= task_list_icon(task_list) %>
   </div>
-  (<%= pluralize(task_list.tasks.size, 'task') %>)
+
+  <div class="span2">
+    (<%= pluralize(task_list.tasks.size, 'task') %>)
+  </div>
+
+  <div class="span1">
+    <%= link_to remove_task_list_icon, task_list, method: :delete, title: 'Remove task list' %>
+  </div>
 </div>

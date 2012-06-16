@@ -7,4 +7,10 @@ module TaskListsHelper
     html_class = task_list.public? ? 'icon-eye-open' : 'icon-eye-close'
     icon(html_class)
   end
+
+  # A trash can
+  #
+  def remove_task_list_icon
+    icon('icon-trash')
+  end
 end
