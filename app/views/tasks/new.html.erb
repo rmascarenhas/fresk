@@ -1,0 +1,18 @@
+<%= render partial: 'task_lists/task_list_summary', object: @task_list, as: :task_list %>
+
+<%= simple_form_for [@task_list, @task], html: { class: 'form-horizontal' } do |f| %>
+  <fieldset>
+    <legend>Add new tasks</legend>
+
+    <%= f.input :description, wrapper: :prepend, label: false do %>
+      <%= content_tag :span, 'What do you have to do?', class: 'add-on' %>
+      <%= f.input_field :description, placeholder: 'Task description' %>
+    <% end %>
+
+    <%= f.input :deadline %>
+
+    <div class="form-actions">
+      <%= f.button :submit, class: 'btn-primary', value: 'Add tasks' %>
+    </div>
+  </fieldset>
+<% end %>

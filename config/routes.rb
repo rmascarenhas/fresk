@@ -1,5 +1,7 @@
 Fresk::Application.routes.draw do
-  resources :task_lists
+  resources :task_lists do
+    resources :tasks, only: [:index, :new, :create]
+  end
 
   get 'not_found', to: 'home#not_found'
 

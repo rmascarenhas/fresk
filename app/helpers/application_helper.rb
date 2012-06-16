@@ -4,7 +4,7 @@ module ApplicationHelper
   # class name of the icon.
   #
   def icon(icon_name)
-    content_tag(:i, nil, class: icon_name)
+    content_tag(:i, nil, class: "#{icon_name} icon-large")
   end
 
 end

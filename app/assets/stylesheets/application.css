@@ -15,7 +15,7 @@
  */
 
 body {
-  background: url(/assets/natural_paper.png);
+  background: url('/assets/natural_paper.png');
 }
 
 .container header h1 {
