@@ -1,14 +1,13 @@
 module Users
 
   class TaskListsController < BaseController
-    before_filter :get_task_list, only: [:edit, :show, :update, :destroy]
 
     def index
-      @task_lists = TaskList.all
+      @task_lists = current_user.task_lists
     end
 
     def new
-      @task_list = TaskList.new
+      @task_list = current_user.task_lists.build
     end
 
     def edit
@@ -20,7 +19,7 @@ module Users
     end
 
     def create
-      @task_list = TaskList.new(params[:task_list])
+      @task_list = current_user.task_lists.build(params[:task_list])
       @task_list.save
 
       respond_with(@task_list)
@@ -38,12 +37,6 @@ module Users
       @task_list.destroy
 
       respond_with(@task_list)
-    end
-
-    private
-
-    def get_task_list
-      TaskList.find(params[:id])
     end
 
   end

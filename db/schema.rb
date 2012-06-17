@@ -14,12 +14,15 @@
 ActiveRecord::Schema.define(:version => 20120616233357) do
 
   create_table "task_lists", :force => true do |t|
+    t.integer  "user_id"
     t.string   "name",                          :null => false
     t.boolean  "public",      :default => true
     t.integer  "tasks_count", :default => 0
     t.datetime "created_at",                    :null => false
     t.datetime "updated_at",                    :null => false
   end
+
+  add_index "task_lists", ["user_id"], :name => "index_task_lists_on_user_id"
 
   create_table "tasks", :force => true do |t|
     t.integer  "task_list_id"
@@ -48,6 +51,7 @@ ActiveRecord::Schema.define(:version => 20120616233357) do
     t.string   "unconfirmed_email"
     t.string   "name",                                   :null => false
     t.string   "username",                               :null => false
+    t.integer  "task_lists_count",       :default => 0
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
   end

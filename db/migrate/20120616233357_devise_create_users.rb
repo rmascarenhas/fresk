@@ -38,6 +38,7 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.string :username, null: false
       # t.string :avatar,   null: false
 
+      t.integer :task_lists_count, default: 0
 
       t.timestamps
     end

@@ -4,6 +4,9 @@ class TaskList < ActiveRecord::Base
   #
   attr_accessible :name, :public, :tasks_attributes
 
+  belongs_to :user,
+             counter_cache: true
+
   has_many :tasks,
            order: 'deadline',
            dependent: :destroy
@@ -13,8 +16,8 @@ class TaskList < ActiveRecord::Base
   attr_readonly :tasks_count
 
   validates :name,
-            presence: true
-            # uniqueness: true, scope: user_id
+            presence: true,
+            uniqueness: { scope: :user_id }
 
   # List task lists in the order they were last updated
   #

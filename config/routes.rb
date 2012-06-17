@@ -1,9 +1,9 @@
 Fresk::Application.routes.draw do
   devise_for :users
-  get '/start', to: 'users#index', as: :user_root
+  get '/start', to: 'users/base#index', as: :user_root
 
   resources :task_lists, module: 'users' do
-    resources :tasks, only: [:index, :new, :create]
+    resources :tasks, only: [:new, :create]
   end
 
   get 'not_found', to: 'home#not_found'

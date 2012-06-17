@@ -9,6 +9,8 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me,
                   :name, :username, :avatar, :login
 
+  attr_readonly :task_lists_count
+
   # Virtual attribute allowing authentication via username or email
   #
   attr_accessor :login
@@ -23,6 +25,10 @@ class User < ActiveRecord::Base
   validates :username,
             presence: true,
             uniqueness: true
+
+  has_many :task_lists,
+           order: 'updated_at',
+           dependent: :destroy
 
   # Override Devise's database authentication method in order to provide login
   # by username or email

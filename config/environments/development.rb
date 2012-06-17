@@ -16,7 +16,7 @@ Fresk::Application.configure do
   # Don't care if the mailer can't send
   config.action_mailer.raise_delivery_errors = true
 
-  config.action_mailer.default_url_options = { host: 'fresk/' }
+  config.action_mailer.default_url_options = { host: 'fresk' }
 
   # Use mailcatcher to verify emails
   ActionMailer::Base.delivery_method = :smtp
