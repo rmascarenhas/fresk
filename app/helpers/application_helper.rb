@@ -34,4 +34,12 @@ module ApplicationHelper
     link_to text, '#', class: 'add_fields', data: { id: id, fields: fields.gsub("\n", '') }
   end
 
+  # Creates a text field prepended by the content passed in the block to this method.
+  #
+  def prepended_text_field(attribute, form_builder, &block)
+    form_builder.input attribute, wrapper: :prepend, label: false do
+      capture(&block)
+    end
+  end
+
 end

@@ -1,8 +1,8 @@
 <fieldset>
   <legend><%= legend %></legend>
 
-  <%= builder.input :name, wrapper: :prepend, label: false do %>
-    <%= content_tag :span, 'Give it a name', class: 'add-on' %>
+  <%= prepended_text_field :name, builder do %>
+    <%= content_tag :span, 'Give it a name!', class: 'add-on' %>
     <%= builder.input_field :name, placeholder: 'Must be unique!' %>
   <% end %>
 
