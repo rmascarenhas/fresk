@@ -1,10 +1,9 @@
 require 'spec_helper'
 
-feature 'Creating a task list', js: true do
+feature 'Creating a task list' do
   background do
-    visit task_lists_path
-    click_link 'Create a new task list'
-    # TODO handle authentication
+    authenticate
+    visit new_task_list_path
   end
 
   scenario 'creating a task list with no tasks' do
@@ -15,7 +14,7 @@ feature 'Creating a task list', js: true do
     page.should have_content('Test')
   end
 
-  scenario 'creating a task list with multiple tasks' do
+  scenario 'creating a task list with multiple tasks', js: true do
     task_list('Insertion')
     new_task('selenium')
     new_task('webkit')
@@ -25,7 +24,7 @@ feature 'Creating a task list', js: true do
     page.should have_content('webkit')
   end
 
-  scenario 'removing a task from the task list' do
+  scenario 'removing a task from the task list', js: true do
     task_list('Removal')
     new_task('selenium')
     click_link 'Remove Task'
