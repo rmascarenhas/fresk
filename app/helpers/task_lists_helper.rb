@@ -4,7 +4,7 @@ module TaskListsHelper
   # is public.
   #
   def task_list_icon(task_list)
-    html_class = task_list.public? ? 'icon-eye-open' : 'icon-eye-close'
+    html_class = task_list.public? ? 'icon-unlock' : 'icon-lock'
     icon(html_class)
   end
 
