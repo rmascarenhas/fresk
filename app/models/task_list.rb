@@ -4,7 +4,9 @@ class TaskList < ActiveRecord::Base
   #
   attr_accessible :name, :public, :tasks_attributes
 
-  belongs_to :user,
+  belongs_to :owner,
+             class_name: 'User',
+             foreign_key: :user_id,
              counter_cache: true
 
   has_many :tasks,
