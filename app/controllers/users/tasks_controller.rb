@@ -1,6 +1,6 @@
 module Users
 
-  class TasksController < UsersController
+  class TasksController < BaseController
     before_filter :get_task_list
 
     def index

@@ -1,6 +1,6 @@
 module Users
 
-  class TaskListsController < UsersController
+  class TaskListsController < BaseController
     before_filter :get_task_list, only: [:edit, :show, :update, :destroy]
 
     def index
