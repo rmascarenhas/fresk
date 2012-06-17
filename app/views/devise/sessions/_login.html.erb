@@ -1,0 +1,21 @@
+<%= simple_form_for resource, as: resource_name, url: session_path(resource_name), html: { class: 'form-horizontal' } do |f| %>
+  <div class="form-inputs">
+    <%= prepended_text_field :login, f do %>
+      <%= content_tag :span, 'Email or username', class: 'add-on' %>
+      <%= f.input_field :login %>
+    <% end %>
+
+    <%= prepended_text_field :password, f do %>
+      <%= content_tag :span, 'Password', class: 'add-on' %>
+      <%= f.input_field :password %>
+    <% end %>
+
+    <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, 'Sign in', class: 'btn-primary' %>
+  </div>
+<% end %>
+
+<%= render 'devise/shared/links' %>

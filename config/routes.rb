@@ -1,13 +1,16 @@
 Fresk::Application.routes.draw do
-  resources :task_lists do
+  devise_for :users
+  get '/start', to: 'users#index', as: :user_root
+
+  resources :task_lists, module: 'users' do
     resources :tasks, only: [:index, :new, :create]
   end
 
   get 'not_found', to: 'home#not_found'
 
-  get 'not_found', to: 'home#not_found'
-
   root to: 'home#index'
+
+  get '*anything', to: 'home#not_found'
 
   # Sample resource route with options:
   #   resources :products do
@@ -41,7 +44,4 @@ Fresk::Application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
-
-  # See how all your routes lay out with "rake routes"
-
 end

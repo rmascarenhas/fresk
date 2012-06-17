@@ -6,7 +6,8 @@ class Task < ActiveRecord::Base
 
   validates :description,
             presence: true,
-            uniqueness: { scope: :task_list_id }
+            uniqueness: { scope: :task_list_id },
+            length: { maximum: 140 }
 
   validates :deadline,
             presence: true

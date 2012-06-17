@@ -13,8 +13,6 @@ gem 'simple_form', '~> 2.0'
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
 
-  gem 'therubyracer', :platforms => :ruby
-
   gem 'uglifier', '>= 1.0.3'
 end
 
@@ -23,4 +21,5 @@ gem 'jquery-rails'
 group :test, :development do
   gem 'rspec-rails', '~> 2.0'
   gem 'capybara', '~> 1.0'
+  gem 'factory_girl_rails', '~> 3.0'
 end

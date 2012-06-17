@@ -39,4 +39,34 @@ describe ApplicationHelper do
       link.should =~ /fields/
     end
   end
+
+  describe '#prepended_text_field' do
+    let :form_builder do
+      Object.new
+    end
+
+    it 'creates an input with "prepend" wrapper' do
+      form_builder.should_receive(:input).with('attr', wrapper: :prepend, label: false)
+      text_field = helper.prepended_text_field('attr', form_builder) do
+        'test'
+      end
+    end
+  end
+
+  describe '#stylize_flash_message' do
+    it 'creates an alert-success on :notice level' do
+      alert_box = helper.stylize_flash_message(:notice, 'Foo')
+      alert_box.should =~ /alert-success/
+    end
+
+    it 'creates an alert info on :alert level' do
+      alert_box = helper.stylize_flash_message(:alert, 'Foo')
+      alert_box.should =~ /alert-info/
+    end
+
+    it 'creates an alert block on unknown levels' do
+      alert_box = helper.stylize_flash_message(:mystery, 'Foo')
+      alert_box.should =~ /alert-block/
+    end
+  end
 end

@@ -1,0 +1,40 @@
+<h2>Create your fresk account now!</h2>
+<br /><br />
+
+<%= simple_form_for resource, as: resource_name, url:registration_path(resource_name), html: { class: 'form-horizontal' } do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= prepended_text_field :name, f do %>
+      <%= content_tag :span, 'Name', class: 'add-on' %>
+      <%= f.input_field :name, placeholder: 'Just to know you better' %>
+    <% end %>
+
+    <%= prepended_text_field :username, f do %>
+      <%= content_tag :span, 'Username', class: 'add-on' %>
+      <%= f.input_field :username, placeholder: 'How you are known on the netz' %>
+    <% end %>
+
+    <%= prepended_text_field :email, f do %>
+      <%= content_tag :span, 'Email', class: 'add-on' %>
+      <%= f.input_field :email, placeholder: "A valid one, don't cheat on us!" %>
+    <% end %>
+
+    <%= prepended_text_field :password, f do %>
+      <%= content_tag :span, 'Password', class: 'add-on' %>
+      <%= f.input_field :password, placeholder: 'abc123' %>
+    <% end %>
+
+    <%= prepended_text_field :password_confirmation, f do %>
+      <%= content_tag :span, 'Password confirmation', class: 'add-on' %>
+      <%= f.input_field :password_confirmation, placeholder: 'abc123' %>
+    <% end %>
+
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, 'Sign up', class: 'btn-primary' %>
+  </div>
+<% end %>
+
+<%= render 'devise/shared/links' %>
