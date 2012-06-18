@@ -1,5 +1,9 @@
 <div class="row well">
   <div class="span2">
+    <%= image_tag task_list.owner.avatar_url(:thumb) %>
+  </div>
+
+  <div class="span2">
     <b><%= link_to task_list.name, task_list_path(task_list) %></b>
   </div>
 
@@ -15,7 +19,4 @@
     <%= link_to_watch task_list %>
   </div>
 
-  <div class="span1">
-    <%= link_to remove_task_list_icon, task_list, method: :delete, title: 'Remove task list' %>
-  </div>
 </div>

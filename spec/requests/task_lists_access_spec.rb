@@ -18,9 +18,9 @@ feature 'Task Lists access' do
   end
 
   background do
-    authenticate(happy_user)
     happy_user.confirm!
     sad_user.confirm!
+    authenticate(happy_user)
   end
 
   it 'allows access to task lists by its owner' do

@@ -24,6 +24,7 @@ gem 'rspec-rails', group: [:test, :development]
 
 group :development do
   gem 'pry-rails'
+  gem 'mailcatcher'
 end
 
 group :test do

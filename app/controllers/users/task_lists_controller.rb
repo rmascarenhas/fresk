@@ -4,10 +4,12 @@ module Users
 
     def index
       @task_lists = current_user.task_lists
+      respond_with(@task_lists)
     end
 
     def new
       @task_list = current_user.task_lists.build
+      respond_with(@task_lists)
     end
 
     def edit

@@ -1,0 +1,6 @@
+<h1>Your Watched Task Lists</h1>
+
+<br /><br />
+
+<%= render(partial: 'watched_task_list', collection: @watched_task_lists, as: :task_list) ||
+  'You are not watching any task lists.' %>

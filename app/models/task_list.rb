@@ -15,6 +15,13 @@ class TaskList < ActiveRecord::Base
            order: 'deadline',
            dependent: :destroy
 
+  has_many :watchings,
+           dependent: :destroy
+
+  has_many :watchers,
+           through: :watchings,
+           source: :user
+
   accepts_nested_attributes_for :tasks, allow_destroy: true
 
   attr_readonly :tasks_count
@@ -25,7 +32,9 @@ class TaskList < ActiveRecord::Base
 
   # List task lists in the order they were last updated
   #
-  default_scope order('updated_at DESC')
+  default_scope order("#{table_name}.updated_at DESC")
+
+  scope :public_lists, where(public: true)
 
   # Indicates whether or not this is a private task list
   #
@@ -64,7 +73,7 @@ class TaskList < ActiveRecord::Base
   def initialize_watch_rules
     rules = Accessible::Rules.new
     rules.add do |user, task_list|
-      task_list.owner != owner && task_list.public?
+      task_list.owner != user && task_list.public?
     end
   end
 end

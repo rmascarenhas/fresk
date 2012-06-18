@@ -36,8 +36,16 @@ class User < ActiveRecord::Base
            order: 'updated_at',
            dependent: :destroy
 
-  # Override Devise's database authentication method in order to provide login
-  # by username or email
+  has_many :watchings,
+           dependent: :destroy
+
+  has_many :watched_task_lists,
+           through: :watchings,
+           source: :task_list,
+           conditions: { public: true }
+
+  # Overwrite Devise's database authentication method in order to provide login
+  # by username or email.
   #
   def self.find_for_database_authentication(warden_conditions)
     conditions = warden_conditions.dup
@@ -46,5 +54,12 @@ class User < ActiveRecord::Base
     else
       where(conditions).first
     end
+  end
+  
+  # Returns a boolean indicating whether or not the user is watching the passed
+  # task list
+  #
+  def watches?(task_list)
+    watched_task_lists.include?(task_list)
   end
 end
