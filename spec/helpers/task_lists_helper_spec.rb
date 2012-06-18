@@ -4,12 +4,12 @@ describe TaskListsHelper do
   describe '#task_list_icon' do
     it 'displays an open eye icon when task list is public' do
       task_list = TaskList.new
-      helper.task_list_icon(task_list).should =~ /eye-open/
+      helper.task_list_icon(task_list).should =~ /unlock/
     end
 
     it 'displays a closed eye when task list is private' do
       task_list = TaskList.new(public: false)
-      helper.task_list_icon(task_list).should =~ /eye-close/
+      helper.task_list_icon(task_list).should =~ /lock/
     end
   end
 end
