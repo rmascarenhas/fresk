@@ -7,13 +7,15 @@ class User < ActiveRecord::Base
 
 
   attr_accessible :email, :password, :password_confirmation, :remember_me,
-                  :name, :username, :avatar, :login
+                  :name, :username, :avatar, :remote_avatar_url, :avatar_cache, :login
 
   attr_readonly :task_lists_count
 
   # Virtual attribute allowing authentication via username or email
   #
   attr_accessor :login
+
+  mount_uploader :avatar, AvatarUploader
 
   validates :name,
             presence: true
@@ -25,6 +27,10 @@ class User < ActiveRecord::Base
   validates :username,
             presence: true,
             uniqueness: true
+
+  validates :avatar,
+            presence: true
+
 
   has_many :task_lists,
            order: 'updated_at',

@@ -51,6 +51,7 @@ ActiveRecord::Schema.define(:version => 20120616233357) do
     t.string   "unconfirmed_email"
     t.string   "name",                                   :null => false
     t.string   "username",                               :null => false
+    t.string   "avatar",                                 :null => false
     t.integer  "task_lists_count",       :default => 0
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false

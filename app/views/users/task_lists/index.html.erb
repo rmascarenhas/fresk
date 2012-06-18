@@ -1,6 +1,10 @@
-<h1>Task Lists</h1>
+<h1>Your Task Lists</h1>
+
+<br /><br />
 
 <%= render(partial: 'task_list_summary', collection: @task_lists, as: :task_list) || 'There are no task lists.' %>
+
+<br /><br />
 
 <p>
   <%= link_to 'Create a new task list', new_task_list_path %>

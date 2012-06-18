@@ -36,7 +36,7 @@ class DeviseCreateUsers < ActiveRecord::Migration
       # Custom fields
       t.string :name,     null: false
       t.string :username, null: false
-      # t.string :avatar,   null: false
+      t.string :avatar,   null: false
 
       t.integer :task_lists_count, default: 0
 

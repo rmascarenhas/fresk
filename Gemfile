@@ -7,6 +7,8 @@ gem 'pg'
 gem 'devise', '~> 2.0'
 gem 'responders'
 gem 'simple_form', '~> 2.0'
+gem 'carrierwave'
+gem 'rmagick'
 
 # Gems used only for assets and not required
 # in production environments by default.

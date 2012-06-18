@@ -30,6 +30,23 @@
       <%= f.input_field :password_confirmation, placeholder: 'abc123' %>
     <% end %>
 
+    <div class="row">
+      <div class="span3">
+        <%= prepended_text_field :avatar, f do %>
+          <%= content_tag :span, 'Your avatar', class: 'add-on' %>
+          <%= f.input_field :avatar %>
+          <%= f.input :avatar_cache, as: :hidden %>
+        <% end %>
+      </div>
+
+      <div class="span3">
+        <%= prepended_text_field :remote_avatar_url, f do %>
+          <%= content_tag :span, '... or avatar URL', class: 'add-on' %>
+          <%= f.input_field :remote_avatar_url %>
+          <% end %>
+      </div>
+    </div>
+
   </div>
 
   <div class="form-actions">
