@@ -6,4 +6,13 @@ FactoryGirl.define do
     password 'abc123'
     avatar File.open(File.join(Rails.root, 'spec/assets/test_avatar.jpg'))
   end
+
+  factory :task_list do
+    sequence(:name) { |n| "task_list_#{n}" }
+    owner factory: :user
+
+    factory :private_task_list do
+      public false
+    end
+  end
 end

@@ -9,7 +9,13 @@ module Users
     private
 
     def get_task_list
-      current_user.task_lists.find(params[:task_list_id] || params[:id])
+      task_list = TaskList.find(params[:task_list_id] || params[:id])
+
+      if task_list.can_be_visited_by?(current_user)
+        task_list
+      else
+        render_404
+      end
     end
   end
 

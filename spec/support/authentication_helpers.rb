@@ -10,6 +10,8 @@ module AuthenticationHelpers
   def authenticate(as=nil)
     @user = as
     user.confirm!
+
+    Capybara.reset_sessions!
     visit new_user_session_path
 
     fill_in 'user_login', with: user.username
