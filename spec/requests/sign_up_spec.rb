@@ -1,3 +1,5 @@
+require 'spec_helper'
+
 feature 'Signing up' do
   background do
     visit root_path
