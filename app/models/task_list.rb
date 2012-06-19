@@ -42,6 +42,12 @@ class TaskList < ActiveRecord::Base
     !self.public
   end
 
+  # SEO-friendly URLs
+  #
+  def to_param
+    "#{id}-#{name.parameterize}"
+  end
+
   # A task list is responsible for knowning if it can be visited or watched
   # by a particular user.
   #
