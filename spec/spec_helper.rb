@@ -11,6 +11,9 @@ Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
 require 'capybara/rails'
 require 'capybara/rspec'
 
+require 'factory_girl'
+require 'database_cleaner'
+
 RSpec.configure do |config|
   # ## Mock Framework
   #

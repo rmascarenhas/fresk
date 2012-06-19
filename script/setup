@@ -1,0 +1,134 @@
+#!/usr/bin/env ruby
+
+# Run this script to have everything set up for you. It will:
+#   * Warn you about needed external dependencies
+#   * Install the dependencies for you
+#   * Set up your database
+#   * Run the test suite
+#   * Insert some test data in it
+#   * Instruct you on how to proceed to start the app.
+#
+
+if RUBY_VERSION < '1.9'
+  err <<-END
+
+This app is Ruby 1.9.x only. Please install a recent enough Ruby version
+before you continue. You can use RVM (https://rvm.io) or rbenv
+(https://github.com/sstephenson/rbenv) for that.
+
+  END
+
+  abort(err)
+end
+
+require File.expand_path('../../config/application', __FILE__)
+
+puts <<-EDEP
+
+Hello!
+
+I will help you install the app so that you don't have to think too much
+about it.
+
+fresk has a couple of external dependencies that must be installed in order
+to successfully run the app. Please make sure you have the following
+dependencies installed before continuing (you can use your package manager
+on Linux or Homebrew on Mac):
+
+    * SQLite3
+    * ImageMagick
+    * Firefox (for the Selenium JavaScript driver)
+
+If you have everything installed already, choose continue; otherwise quit now
+and run this script again once you have your external dependencies ready.
+
+EDEP
+
+begin
+  print '(C)ontinue/(A)bort: ' 
+end until ['c', 'a'].include?(answer = gets.chomp.downcase)
+
+exit(1) if answer == 'a'
+
+puts "Installing dependencies from the Gemfile...\n"
+
+require 'bundler'
+require 'bundler/cli'
+
+# Install gem dependencies on vendor/bundle
+#
+bundler_opts = ['--path', 'vendor/bundle']
+Bundler::CLI.start(bundler_opts)
+
+require 'rake'
+
+rake_app = Rake::Application.new
+Rake.application = rake_app
+
+rake_app.init
+rake_app.load_rakefile
+
+puts <<-SPEC
+
+All right! Now let's run the test suite. Cross your fingers...
+
+SPEC
+
+rake_app['spec'].invoke
+
+puts <<-DB
+
+Done!
+
+Now it's time to create your database, migrate it and insert some test data in it...
+
+DB
+
+rake_app['db:migrate'].invoke
+rake_app['db:test:prepare'].invoke
+
+# Unfortunately, +Task+ is still a top-level class at Rake (at least now
+# deprecated). :-(
+# This causes trouble since we have a +Task+ model, and rake will think
+# we refer to Rake::Task when creating seed data. Shelling out avoids
+# this problem.
+#
+system 'bundle exec rake db:seed_fu'
+
+# Leave if there was an error with seeding
+#
+exit(1) unless $? == 0
+
+# Confirm created users
+#
+User.find_each do |user|
+  user.confirm!
+end
+
+# Say goodbye
+#
+puts <<-GOODBYE
+
+Thank you for your patience!
+
+We are finally done, but there are still two important things to be aware of:
+
+1) If you want to view the emails sent by the application (or register a new
+user, which involves receiving an email and confirming an account), you will 
+have to start the `mailcatcher` program. You can easily do that by running 
+it with no extra arguments:
+
+    $ bundle exec mailcatcher
+
+2) This app assumes it will be accessed via its name in the browser (fresk/).
+If that's your setup, you don't have to change anything. However, if you
+decide to run the application using a different host/port combination, you
+will need to change the value of `action_mailer.default_url_options` in the 
+config/environments/development.rb file.
+
+After you start the application server, you can sign in with one of the
+created users (example: #{User.first.username}). The password of every user
+is "password".
+
+Have fun!
+GOODBYE

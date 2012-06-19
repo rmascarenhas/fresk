@@ -1,16 +1,14 @@
 development:
-  adapter: postgresql
+  adapter: sqlite3
   encoding: unicode
-  database: fresk_dev
+  database: db/development.db
   pool: 5
-  username: fresk
 
 test:
-  adapter: postgresql
+  adapter: sqlite3
   encoding: unicode
-  database: fresk_test
+  database: db/test.db
   pool: 5
-  username: fresk
 
 production:
   adapter: postgresql

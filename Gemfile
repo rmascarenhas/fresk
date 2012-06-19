@@ -2,7 +2,7 @@ source :rubygems
 
 gem 'rails', '3.2.6'
 
-gem 'pg'
+gem 'sqlite3'
 
 gem 'devise', '~> 2.0'
 gem 'responders'
@@ -25,6 +25,8 @@ gem 'rspec-rails', group: [:test, :development]
 group :development do
   gem 'pry-rails'
   gem 'mailcatcher'
+  gem 'seed-fu'
+  gem 'ffaker'
 end
 
 group :test do
