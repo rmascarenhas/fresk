@@ -3,6 +3,7 @@
 <%= render @task_list %>
 
 <p>
-  <%= link_to 'Edit this task list', edit_task_list_path(@task_list) %> |
-  <%= link_to 'See all task lists', task_lists_path %>
+  <% if @task_list.owner == current_user %>
+    <%= link_to'Edit this task list', edit_task_list_path(@task_list) %> |
+  <% end %>
 </p>

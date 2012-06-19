@@ -1,6 +1,7 @@
 module Users
 
   class TaskListsController < BaseController
+    before_filter :verify_ownership, except: [:index, :show, :new]
 
     def index
       @task_lists = current_user.task_lists
@@ -39,6 +40,13 @@ module Users
       @task_list.destroy
 
       respond_with(@task_list)
+    end
+
+
+    private
+
+    def verify_ownership
+      render_404 unless get_task_list.owner == current_user
     end
 
   end
