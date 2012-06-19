@@ -12,6 +12,8 @@ class Task < ActiveRecord::Base
   validates :deadline,
             presence: true
 
+  default_scope order("#{table_name}.deadline")
+
 
   # A task is expired if its deadline has already passed.
   #

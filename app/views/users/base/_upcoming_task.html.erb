@@ -1,0 +1,10 @@
+<div class="row">
+
+  You have to <span class="task"><%= task.description %></span>
+
+  in <%= distance_of_time_in_words_to_now(task.deadline) %>
+
+  (<%= link_to "More from #{task.task_list.name}", task_list_path(task.task_list) %>)
+</div>
+
+<br />

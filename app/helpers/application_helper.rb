@@ -42,8 +42,8 @@ module ApplicationHelper
     end
   end
 
-  # Creates an alert box to the passed flash message, using different styles depending
-  # on the flash message level.
+  # Creates an alert box to the passed flash message, using different styles 
+  # depending on the flash message level.
   #
   def stylize_flash_message(level, message)
     return if message.nil?
@@ -59,4 +59,15 @@ module ApplicationHelper
     end
   end
 
+  # Instantiates a presenter to be used in the views. The presenter to be
+  # used is guessed from the class of the object passed. It is assumed to
+  # be in the form <object_class>Presenter. If that is not the case, a
+  # presenter class can be passed as a second argument.
+  #
+  def present(object, presenter_class=nil)
+    presenter_class ||= "#{object.class.name}Presenter".constantize
+    presenter = presenter_class.new(object, self)
+
+    yield presenter if block_given?
+  end
 end

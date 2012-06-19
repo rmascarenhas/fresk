@@ -24,3 +24,8 @@ body {
   font-size: 5em;
   font-family: 'The Girl Next Door', cursive;
 }
+
+.task {
+  color: #ff960d;
+  font-weight: bold;
+}

@@ -1,0 +1,17 @@
+<div class="row">
+  <div class="span2">
+    <%= image_tag task.task_list.owner.avatar_url(:thumb) %>
+  </div>
+
+  <div class="span6">
+    <b><%= task.task_list.owner.username %></b> 
+    has to <span class="task"><%= task.description %></span>
+
+    in <%= distance_of_time_in_words_to_now(task.deadline) %>
+
+    (<%= link_to "More from #{task.task_list.name}", task_list_path(task.task_list) %>)
+  </div>
+
+</div>
+
+<br />

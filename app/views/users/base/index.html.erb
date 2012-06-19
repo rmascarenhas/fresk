@@ -10,3 +10,15 @@
 </div>
 
 <hr />
+
+<% present current_user do |p| %>
+  <h2>Upcoming Tasks</h2>
+  <br /><br />
+  <%= p.upcoming_tasks %>
+
+  <hr />
+
+  <h2>Upcoming Watched Tasks</h2>
+  <br /><br />
+  <%= p.upcoming_watched_tasks %>
+<% end %>
