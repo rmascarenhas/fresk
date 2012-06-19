@@ -1,7 +1,7 @@
 module Users
 
   class TaskListsController < BaseController
-    before_filter :verify_ownership, except: [:index, :show, :new]
+    before_filter :verify_ownership, except: [:index, :show, :new, :create]
 
     def index
       @task_lists = current_user.task_lists

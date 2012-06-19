@@ -47,7 +47,7 @@ class User < ActiveRecord::Base
   # Overwrite Devise's database authentication method in order to provide login
   # by username or email.
   #
-  def self.find_for_database_authentication(warden_conditions)
+  def self.find_first_by_auth_conditions(warden_conditions)
     conditions = warden_conditions.dup
     if login = conditions.delete(:login)
       where(conditions).where('username = :login OR lower(email) = :login', login: login).first
