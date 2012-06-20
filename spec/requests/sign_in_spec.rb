@@ -11,20 +11,14 @@ feature 'Signing in' do
   end
 
   scenario 'signing in with valid email and password combination' do
-    fill_in 'user_login',    with: user.email
-    fill_in 'user_password', with: user.password
-
-    click_button 'Sign in'
+    authenticate(user, capybara: true)
 
     current_path.should eq user_root_path
     page.should have_content("Hello, #{user.username}")
   end
 
   scenario 'signing in with valid username and password combination' do
-    fill_in 'user_login',    with: user.username
-    fill_in 'user_password', with: user.password
-
-    click_button 'Sign in'
+    authenticate(user, capybara: true)
 
     current_path.should eq user_root_path
     page.should have_content("Hello, #{user.username}")
