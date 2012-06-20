@@ -35,6 +35,8 @@ on Linux or Homebrew on Mac):
 
     * SQLite3
     * ImageMagick
+    * libxml2
+    * libxslt
     * Firefox (for the Selenium JavaScript driver)
 
 If you have everything installed already, choose continue; otherwise quit now
