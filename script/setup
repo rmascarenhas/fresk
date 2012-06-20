@@ -10,18 +10,16 @@
 #
 
 if RUBY_VERSION < '1.9'
-  err <<-END
+  err = <<-ERR
 
 This app is Ruby 1.9.x only. Please install a recent enough Ruby version
 before you continue. You can use RVM (https://rvm.io) or rbenv
 (https://github.com/sstephenson/rbenv) for that.
 
-  END
+  ERR
 
   abort(err)
 end
-
-require File.expand_path('../../config/application', __FILE__)
 
 puts <<-EDEP
 
@@ -50,9 +48,23 @@ end until ['c', 'a'].include?(answer = gets.chomp.downcase)
 
 exit(1) if answer == 'a'
 
+begin
+  require 'bundler'
+rescue LoadError
+  err = <<-ERR
+
+You need bundler in order to manage this app dependecies. Please install it
+with the following command:
+
+    $ gem install bundler
+
+ERR
+
+  abort(err)
+end
+
 puts "Installing dependencies from the Gemfile...\n"
 
-require 'bundler'
 require 'bundler/cli'
 
 # Install gem dependencies on vendor/bundle
@@ -120,14 +132,14 @@ it with no extra arguments:
 
     $ bundle exec mailcatcher
 
-2) This app assumes it will be accessed via its name in the browser (fresk/).
+2) This app assumes it can be accessed by its name (fresk/). 
 If that's your setup, you don't have to change anything. However, if you
 decide to run the application using a different host/port combination, you
 will need to change the value of `action_mailer.default_url_options` in the 
 config/environments/development.rb file.
 
 After you start the application server, you can sign in with one of the
-created users (example: #{User.first.username}). The password of every user
+created users (example: #{User.first.username}). The password for every user
 is "password".
 
 Have fun!
