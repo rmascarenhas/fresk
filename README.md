@@ -1,12 +1,12 @@
 fresk
 =====
 
-Welcome to fresk! A social ToDo list app.
+Welcome to fresk! A tiny ToDo list app.
 
 Getting Started
 ===============
 
-Get up and running is easy. Clone the repo, run:
+Getting up and running is easy. Clone the repo, run:
 
     $ ./script/setup
 
