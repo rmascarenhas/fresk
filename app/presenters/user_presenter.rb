@@ -1,4 +1,4 @@
-# The +Users::IndexPresenter+ class is used to build the user index page,
+# The +UserPresenter+ class is used to build the user index page,
 # accessed after the user signs in. It contains lots of information, such as
 # the tasks created by the user, its task lists and the upcoming tasks of
 # his watched task lists.
