@@ -62,4 +62,11 @@ class User < ActiveRecord::Base
   def watches?(task_list)
     watched_task_lists.include?(task_list)
   end
+
+  # Returns a boolean indicating whether or not the user owns the passed
+  # task list
+  #
+  def owns?(task_list)
+    task_list.owner == self
+  end
 end

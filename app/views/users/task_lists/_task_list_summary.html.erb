@@ -16,6 +16,8 @@
   </div>
 
   <div class="span1">
-    <%= link_to remove_task_list_icon, task_list, method: :delete, title: 'Remove task list' %>
+    <% if current_user.owns?(task_list) %>
+      <%= link_to remove_task_list_icon, task_list, method: :delete, title: 'Remove task list' %>
+    <% end %>
   </div>
 </div>
