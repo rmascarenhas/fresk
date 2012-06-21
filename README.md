@@ -11,3 +11,8 @@ Getting up and running is easy. Clone the repo, run:
     $ ./script/setup
 
 And follow the steps.
+
+License
+=======
+
+MIT.
